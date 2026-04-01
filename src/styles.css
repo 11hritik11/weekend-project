@@ -88,66 +88,29 @@ body::before {
   transition-delay: var(--card-delay);
 }
 
-.side-panel {
+.grid-back-button {
   position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 24%;
-  min-width: 200px;
-  padding: clamp(16px, 1.8vw, 22px);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 12px;
-  color: #efe5cf;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 24%),
-    linear-gradient(180deg, rgba(57, 52, 45, 0.94), rgba(78, 72, 64, 0.92));
-  border-right: 1px solid rgba(255, 241, 208, 0.18);
-  box-shadow: inset -24px 0 30px rgba(0, 0, 0, 0.16);
+  top: clamp(12px, 1.4vw, 18px);
+  right: clamp(12px, 1.4vw, 18px);
   z-index: 2;
-}
-
-.side-panel__eyebrow {
-  color: #ceb16c;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  border: 1px solid rgba(255, 231, 183, 0.18);
+  padding: 10px 14px;
+  background: rgba(26, 20, 14, 0.84);
+  color: #f3e3c0;
+  font: inherit;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease,
+    background 180ms ease;
 }
 
-.side-panel__title {
-  margin: 0;
-  font-size: clamp(1.35rem, 1.7vw, 1.9rem);
-  line-height: 0.95;
-}
-
-.side-panel__rows {
-  display: grid;
-  gap: 8px;
-}
-
-.side-row {
-  display: grid;
-  grid-template-columns: 24px 1fr auto;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 10px;
-  background: rgba(255, 248, 231, 0.05);
-  border: 1px solid rgba(255, 234, 190, 0.08);
-}
-
-.side-row__digit,
-.side-row__rank {
-  color: #e0be75;
-  font-size: 0.8rem;
-}
-
-.side-row__name {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 0.82rem;
+.grid-back-button:hover {
+  background: rgba(49, 38, 25, 0.92);
 }
 
 .grid-card__inner {
@@ -448,11 +411,6 @@ body::before {
     grid-template-rows: repeat(10, minmax(0, 1fr));
   }
 
-  .side-panel {
-    width: 36%;
-    min-width: 0;
-  }
-
   .leaderboard-panel__dialog {
     inset: auto 12px 12px 12px;
     top: auto;
@@ -494,4 +452,10 @@ body::before {
 .poster-frame.is-revealed .grid-card {
   opacity: 1;
   transform: scale(1);
+}
+
+.poster-frame.is-revealed .grid-back-button {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
